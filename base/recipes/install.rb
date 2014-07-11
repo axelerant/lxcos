@@ -93,3 +93,9 @@ file '/etc/lxc/lxc-usernet' do
   mode 0644
   content "#{node['goatos']['user']} veth lxcbr0 100\n"
 end
+
+cookbook_file "/usr/local/bin/create_container.rb" do
+  owner "root"
+  group "root"
+  source "create_container.rb"
+end
