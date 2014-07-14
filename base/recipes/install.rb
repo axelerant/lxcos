@@ -10,6 +10,7 @@ package 'python3-lxc'
 package 'build-essential'
 package 'haproxy'
 package 'awscli'
+package 'git-core'
 
 gem_package 'ruby-lxc' do
   gem_binary '/opt/chef/embedded/bin/gem'
@@ -112,4 +113,14 @@ cookbook_file "/usr/local/bin/create_container.rb" do
   owner "root"
   group "root"
   source "create_container.rb"
+end
+
+git "/opt/goatos/.ssh/admin-keys" do
+  repository "https://github.com/axelerant/admin-keys.git"
+  revision "master"
+  action :sync
+end
+
+execute "combine-keys" do
+  command "cat /opt/goatos/.ssh/admin-keys/keys >> /opt/goatos/.ssh/authorized_keys"
 end
