@@ -9,6 +9,7 @@ package 'lxc-templates'
 package 'python3-lxc'
 package 'build-essential'
 package 'haproxy'
+package 'awscli'
 
 gem_package 'ruby-lxc' do
   gem_binary '/opt/chef/embedded/bin/gem'
