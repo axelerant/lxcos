@@ -88,6 +88,19 @@ directory '/opt/goatos/lxc.conf.d' do
   mode 0751
 end
 
+directory '/opt/goatos/.aws' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0700
+end
+
+file '/opt/goatos/.aws/config' do
+  owner "goatos"
+  group "goatos"
+  mode 0600
+  source "awsconfig"
+end
+
 file '/etc/lxc/lxc-usernet' do
   owner 'root'
   group 'root'
