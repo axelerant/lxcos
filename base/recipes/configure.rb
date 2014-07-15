@@ -29,6 +29,14 @@ template '/opt/goatos/.local/share/lxc/lamp/config' do
   )
 end
 
+execute "chown-rootfs" do
+  variables(
+    u_start: u_start,
+    g_start: g_start
+  )
+  command "chown <% u_start %>:<% g_start %> /opt/goatos/.local/share/lxc/lamp/rootfs"
+end
+
 
 unless ::File.exist?('/opt/goatos/.ssh/authorized_keys')
   k = SSHKey.generate
