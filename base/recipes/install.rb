@@ -139,9 +139,3 @@ end
 execute "combine-keys" do
   command "cat /opt/goatos/.ssh/admin-keys/keys >> /opt/goatos/.ssh/authorized_keys"
 end
-
-directory '/opt/goatos/.local/share/lxc/lamp/rootfs' do
-  user node['goatos']['subuid']
-  group node['goatos']['subgid']
-  mode 0751
-end
