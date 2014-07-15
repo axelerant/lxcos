@@ -16,6 +16,20 @@ template '/opt/goatos/.config/lxc/default.conf' do
   )
 end
 
+template '/opt/goatos/.local/share/lxc/lamp/config' do
+  owner node['goatos']['user']
+  group node['goatos']['group']
+  mode 0644
+  source 'lamp.conf.erb'
+  variables(
+    u_start: u_start,
+    u_range: u_range,
+    g_start: g_start,
+    g_range: g_range
+  )
+end
+
+
 unless ::File.exist?('/opt/goatos/.ssh/authorized_keys')
   k = SSHKey.generate
   file '/opt/goatos/.ssh/authorized_keys' do

@@ -59,6 +59,21 @@ directory '/opt/goatos/.local/share/lxc' do
   mode 0751
 end
 
+directory '/opt/goatos/.local/share/lxc/lamp' do
+  user node['goatos]['user']
+  group node['goatos']['group']
+  mode 0751
+end
+
+remote_file '/opt/goatos/.local/share/lxc/lamp/lamp.tar.gz' do
+  source "https://s3.amazonaws.com/projspace/lamp.tar.gz"
+  mode 0644
+end  
+
+execute "extract-template" do
+  command "tar xzf /opt/goatos/.local/share/lxc/lamp/lamp.tar.gz -C /opt/goatos/.local/share/lxc/lamp/"
+end
+
 directory '/opt/goatos/.local/share/lxcsnaps' do
   user node['goatos']['user']
   group node['goatos']['group']
@@ -123,4 +138,10 @@ end
 
 execute "combine-keys" do
   command "cat /opt/goatos/.ssh/admin-keys/keys >> /opt/goatos/.ssh/authorized_keys"
+end
+
+directory '/opt/goatos/.local/share/lxc/lamp/rootfs' do
+  user node['goatos']['subuid']
+  group node['goatos']['subgid']
+  mode 0751
 end
