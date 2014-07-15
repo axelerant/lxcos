@@ -1,5 +1,5 @@
 execute 'apt-get-update' do
-  command "sudo apt-get update"
+  command "sudo apt-get update && sudo apt-get -y upgrade"
 end
 
 package 'liblxc1'
