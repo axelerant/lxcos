@@ -1,3 +1,4 @@
+include_recipe "base::install"
 require 'sshkey'
 
 u_start, u_range = ::File.read('/etc/subuid').scan(/goatos:(\d+):(\d+)/).flatten
