@@ -30,7 +30,7 @@ template '/opt/goatos/.local/share/lxc/lamp/config' do
 end
 
 execute "chown-rootfs" do
-  command "chown <% u_start %>:<% g_start %> /opt/goatos/.local/share/lxc/lamp/rootfs"
+  command "chown #{u_start}:#{g_start} /opt/goatos/.local/share/lxc/lamp/rootfs -R"
 end
 
 
