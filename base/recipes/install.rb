@@ -95,7 +95,7 @@ directory '/opt/goatos/.aws' do
   mode 0700
 end
 
-file '/opt/goatos/.aws/config' do
+cookbook_file '/opt/goatos/.aws/config' do
   owner "goatos"
   group "goatos"
   mode 0600
