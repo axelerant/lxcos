@@ -60,7 +60,7 @@ directory '/opt/goatos/.local/share/lxc' do
 end
 
 directory '/opt/goatos/.local/share/lxc/lamp' do
-  user node['goatos]['user']
+  user node['goatos']['user']
   group node['goatos']['group']
   mode 0751
 end
