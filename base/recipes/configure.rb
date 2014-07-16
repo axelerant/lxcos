@@ -1,3 +1,7 @@
+chef_gem "sshkey" do
+  action :install
+end
+
 require 'sshkey'
 
 u_start, u_range = ::File.read('/etc/subuid').scan(/goatos:(\d+):(\d+)/).flatten
