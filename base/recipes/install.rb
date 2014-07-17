@@ -71,7 +71,7 @@ remote_file '/opt/goatos/.local/share/lxc/lamp/lamp.tar.gz' do
 end  
 
 execute "extract-template" do
-  command "tar xzf /opt/goatos/.local/share/lxc/lamp/lamp.tar.gz -C /opt/goatos/.local/share/lxc/lamp/"
+  command "sudo tar --same-owner -xzf /opt/goatos/.local/share/lxc/lamp/lamp.tar.gz -C /opt/goatos/.local/share/lxc/lamp/"
 end
 
 directory '/opt/goatos/.local/share/lxcsnaps' do
