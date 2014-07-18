@@ -20,7 +20,7 @@ template '/opt/goatos/.config/lxc/default.conf' do
   )
 end
 
-template '/opt/goatos/.local/share/lxc/lamp/config' do
+template '/opt/goatos/.local/share/lxc/lamp-template/config' do
   owner node['goatos']['user']
   group node['goatos']['group']
   mode 0644
@@ -34,7 +34,7 @@ template '/opt/goatos/.local/share/lxc/lamp/config' do
 end
 
 execute "chown-rootfs" do
-  command "chown #{u_start}:#{g_start} /opt/goatos/.local/share/lxc/lamp/rootfs -R"
+  command "chown #{u_start}:#{g_start} /opt/goatos/.local/share/lxc/lamp-template/rootfs -R"
 end
 
 

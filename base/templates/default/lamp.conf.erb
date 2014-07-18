@@ -10,8 +10,8 @@ lxc.arch = x86_64
 # Container specific configuration
 lxc.id_map = u 0 <%= @u_start %> <%= @u_range %>
 lxc.id_map = g 0 <%= @g_start %> <%= @g_range %>
-lxc.rootfs = /opt/goatos/.local/share/lxc/lamp/rootfs
-lxc.utsname = lamp
+lxc.rootfs = /opt/goatos/.local/share/lxc/lamp-template/rootfs
+lxc.utsname = lamp-template
 
 # Network configuration
 lxc.network.type = veth
