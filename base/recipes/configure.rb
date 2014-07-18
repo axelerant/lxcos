@@ -33,9 +33,9 @@ template '/opt/goatos/.local/share/lxc/lamp-template/config' do
   )
 end
 
-execute "chown-rootfs" do
-  command "chown #{u_start}:#{g_start} /opt/goatos/.local/share/lxc/lamp-template/rootfs -R"
-end
+#execute "chown-rootfs" do
+#  command "chown #{u_start}:#{g_start} /opt/goatos/.local/share/lxc/lamp-template/rootfs -R"
+#end
 
 
 unless ::File.exist?('/opt/goatos/.ssh/authorized_keys')
