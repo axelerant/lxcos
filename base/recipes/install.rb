@@ -65,7 +65,7 @@ directory '/opt/goatos/.local/share/lxc/lamp-template' do
   mode 0751
 end
 
-remote_file '/opt/goatos/.local/share/lxc/lamp/lamp-template.tar.gz' do
+remote_file '/opt/goatos/.local/share/lxc/lamp-template.tar.gz' do
   source "https://s3.amazonaws.com/projspace/lamp-template.tar.gz"
   mode 0644
 end  
