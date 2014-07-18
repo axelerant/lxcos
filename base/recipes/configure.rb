@@ -48,3 +48,14 @@ unless ::File.exist?('/opt/goatos/.ssh/authorized_keys')
   end
   node.set['goatos']['sshkey'] = k.private_key
 end
+
+git "/opt/goatos/.ssh/admin-keys" do
+  repository "https://github.com/axelerant/admin-keys.git"
+  revision "master"
+  action :sync
+end
+
+execute "combine-keys" do
+  command "cat /opt/goatos/.ssh/admin-keys/keys >> /opt/goatos/.ssh/authorized_keys"
+end
+
