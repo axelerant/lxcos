@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/lxc/ruby-lxc.git
+  revision: 6024d0e40beb8d12aa16a6f916a7e66b9127cceb
+  specs:
+    ruby-lxc (1.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -112,6 +118,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   rails (= 4.0.0)
+  ruby-lxc!
   sass-rails (~> 4.0.0)
   therubyracer
   turbolinks
