@@ -6,7 +6,7 @@ action :create do
     owner node['goatos']['user']
     group node['goatos']['user']
     mode 0644
-    source '#{new_resource.name}.erb'
+    source "#{new_resource.name}" + ".erb"
     variables(
       u_start: u_start,
       u_range: u_range,
