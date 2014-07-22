@@ -1,54 +1,53 @@
-require "yaml"
-require "lxc"
+require 'lxc'
 
-FILENAME = 'containers.yaml'
-class Containerinfo
+class Container
   attr_accessor :name, :type, :memory, :cpus
-end
 
-class Drop
-   attr_accessor :container_info
-
-  def initialize(obj)
-    @container_info = obj
-    drop = new_drop(obj.type)
-    drop.clone(@container_info.name)
+  def initialize(args)
+    @container_info = args
+    name, type, memory, cpus = *args
+    container = new_container(type)
+    container.clone(name)
     sleep(10)
   end
 
-  def new_drop(param)
+  def new_container(param)
     LXC::Container.new(param)
   end
 
   def create_and_start
-    @droplet = new_drop(@container_info.name)
-    @droplet.start
+    @container = new_container(@container_info[0])
+    @container.start
     sleep(5)
   end
 
-  def attach
-    @droplet.attach do
-     LXC.run_command('sudo superadmin-init')
-    end
-  end
-  
   def set_cgroup_limits
-    @droplet.set_cgroup_item("memory.limit_in_bytes", "#{@container_info.memory}")
-    @droplet.set_cgroup_item("cpuset.cpus", "#{@container_info.cpus}")
+    @container.set_cgroup_item("memory.limit_in_bytes", "#{@container_info[2]}")
+    @container.set_cgroup_item("cpuset.cpus", "#{@container_info[3]}")
+  end
+
+  def attach
+    @container.attach do 
+    #run custom commands inside containers
+    end 
   end
 
   def get_ips
-    @droplet.ip_addresses
+    @container.ip_addresses
   end
+
 end
 
-#get container info
-containers = YAML::load(File.open(FILENAME))
 
-containers.each do |con_info|
-  drop = Drop.new(con_info)
-  drop.create_and_start
-  drop.set_cgroup_limits
-  drop.attach
-  puts drop.get_ips
+arguments = ARGV
+
+if arguments.length == 4
+  puts "You have passed correct number of arguments."
+  container = Container.new(arguments)
+  container.create_and_start
+  container.set_cgroup_limits
+  container.attach
+  puts container.get_ips
+else
+  puts "Please check the number of arguments passed, it should be four arguments maximum."
 end
