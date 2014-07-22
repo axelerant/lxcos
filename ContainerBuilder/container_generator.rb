@@ -1,7 +1,7 @@
-
+require 'lxc'
 
 class Container
-  attr_accessor :name, :type, :memory, :cpus, :container_info
+  attr_accessor :name, :type, :memory, :cpus
 
   def initialize(args)
     @container_info = args
@@ -43,7 +43,7 @@ arguments = ARGV
 
 if arguments.length == 4
   puts "You have passed correct number of arguments."
-  conatiner = Container.new(arguments)
+  container = Container.new(arguments)
   container.create_and_start
   container.set_cgroup_limits
   container.attach
