@@ -25,7 +25,7 @@ is on the way.
 * knife ec2 server create -r "recipe[base::install],recipe[base::configure]" -I ami-80778be8 --flavor t1.micro -G <security-group> -Z <zone> -x ubuntu -S <keyname> -N <node-name> -i </path/to/key> -K <AMAZONSECRETKEY> -A <AMAZONACCESSKEY> --ebs-size G
 * Make sure that you have a security group with 22 and 80 open
 * Wait for a while. Amazon micro instances are slow and being free provisioning is more slow.
-* After provisioned, ssh goatos@<ec2-url>
+* After provisioned, ssh goatos@ec2-url
 * Finished.
 
 Usage
