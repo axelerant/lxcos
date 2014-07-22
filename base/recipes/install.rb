@@ -28,6 +28,7 @@ end
 user 'goatos' do
   home '/opt/goatos'
   supports(manage_home: true)
+  shell "/bin/bash"
 end
 
 directory '/opt/goatos/.config' do
@@ -128,5 +129,13 @@ end
 cookbook_file "/usr/local/bin/create_container.rb" do
   owner "root"
   group "root"
+  mode 0755
   source "create_container.rb"
+end
+
+file '/opt/goatos/lxc.conf.d/cgmmove' do
+  owner 'goatos'
+  group 'goatos'
+  mode 0755
+  content "cgm movepid all #{node['goatos']['user']} $$ > /dev/null 2>&1"
 end

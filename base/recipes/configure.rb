@@ -27,11 +27,3 @@ end
 execute "cgroups" do
   command "sudo cgm create all goatos && sudo cgm chown all goatos $(id -u goatos) $(id -g goatos)"
 end
-
-execute "movepids" do
-  cwd "/opt/goatos"
-  user "goatos"
-  action :run
-  environment ({'HOME' => '/opt/goatos', 'USER' => 'goatos'})
-  command "cgm movepid all goatos $$"
-end
