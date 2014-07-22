@@ -18,7 +18,7 @@ class Container
   def create_and_start
     @container = new_container(@container_info[0])
     @container.start
-    @container.sleep(5)
+    sleep(5)
   end
 
   def set_cgroup_limits
@@ -28,7 +28,7 @@ class Container
 
   def attach
     @container.attach do 
-      LXC.run_command('ifconfig eth0')
+    #run custom commands inside containers
     end 
   end
 
