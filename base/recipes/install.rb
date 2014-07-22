@@ -11,6 +11,7 @@ package 'build-essential'
 package 'haproxy'
 package 'awscli'
 package 'git-core'
+package 'cgmanager-utils'
 
 gem_package 'ruby-lxc' do
   gem_binary '/opt/chef/embedded/bin/gem'

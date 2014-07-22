@@ -24,3 +24,6 @@ execute "combine-keys" do
   command "cat /opt/goatos/.ssh/admin-keys/keys >> /opt/goatos/.ssh/authorized_keys"
 end
 
+execute "cgroups" do
+  command "sudo cgm create all goatos && sudo cgm chown all goatos $(id -u goatos) $(id -g goatos) && sudo -u goatos cgm movepid all goatos $$"
+end
