@@ -36,3 +36,18 @@ ruby_block "edit bashrc" do
     brc.write_file
   end
 end
+
+ruby_block "enable haproxy" do
+  block do
+    line = 'ENABLED=0'
+    newline = 'ENABLED=1'
+    en = Chef::Util::FileEdit.new("/etc/default/haproxy")
+    en.search_file_replace_line(/#{line}/, newline)
+    en.write_file
+  end
+end
+
+service "haproxy" do
+  action :start
+end
+  

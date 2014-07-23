@@ -1,0 +1,19 @@
+global
+        log /dev/log    local0
+        log /dev/log    local1 notice
+        chroot /var/lib/haproxy
+        user haproxy
+        group haproxy
+        daemon
+ 
+defaults
+        log     global
+        option  dontlognull
+        contimeout 5000
+        clitimeout 50000
+        srvtimeout 50000
+<% @containers.each |name, ip|%>
+listen <%=name.upcase %> :<%= (@start_port+=1) %>
+  mode http
+  server <%= name %> <%= ip %>:<%= 80 %>
+<% end %>
