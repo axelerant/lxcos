@@ -4,15 +4,15 @@ class Container
   attr_accessor :name, :type, :memory, :cpus
 
   def initialize(args)
-    @container = {
+    @container_info = {
       name: args[0],
       type: args[1],
       memory: args[2],
       cpus: args[3],
     }
 
-    container = new_container(@container[:type])
-    container.clone(@container[:name])
+    container = new_container(@container_info[:type])
+    container.clone(@container_info[:name])
     sleep(10)
   end
 
@@ -21,14 +21,14 @@ class Container
   end
 
   def create_and_start
-    @container = new_container(@container[:name])
+    @container = new_container(@container_info[:name])
     @container.start
     sleep(5)
   end
 
   def set_cgroup_limits
-    @container.set_cgroup_item("memory.limit_in_bytes", @container[:memory])
-    @container.set_cgroup_item("cpuset.cpus", @container[:cpus])
+    @container.set_cgroup_item("memory.limit_in_bytes", @container_info[:memory])
+    @container.set_cgroup_item("cpuset.cpus", @container_info[:cpus])
   end
 
   def attach
