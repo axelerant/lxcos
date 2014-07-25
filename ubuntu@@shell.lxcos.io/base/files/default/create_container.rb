@@ -27,8 +27,8 @@ class Container
   end
 
   def set_cgroup_limits
-    @container.set_cgroup_item("memory.limit_in_bytes", @container[:memory])
-    @container.set_cgroup_item("cpuset.cpus", @container[:cpus])
+    @container.set_cgroup_item("memory.limit_in_bytes", "#{@container[:memory]}")
+    @container.set_cgroup_item("cpuset.cpus", "#{@container[:cpus]}")
   end
 
   def attach
