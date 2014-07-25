@@ -4,7 +4,7 @@ class Container
   attr_accessor :name, :type, :memory, :cpus
 
   def initialize(args)
-    @container {
+    @container = {
       name: args[0],
       type: args[1],
       memory: args[2],
