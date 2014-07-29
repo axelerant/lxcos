@@ -49,5 +49,6 @@ end
 
 service "haproxy" do
   action :start
+  ignore_failure :true
 end
   
