@@ -133,6 +133,13 @@ cookbook_file "/usr/local/bin/create_container.rb" do
   source "create_container.rb"
 end
 
+cookbook_file "/usr/local/bin/number_of_containers.rb" do
+  owner "root"
+  group "root"
+  mode 0755
+  source "number_of_containers.rb"
+end
+
 file '/opt/goatos/lxc.conf.d/cgmmove' do
   owner 'goatos'
   group 'goatos'

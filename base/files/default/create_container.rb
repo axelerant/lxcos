@@ -1,3 +1,4 @@
+#!/opt/chef/embedded/bin/ruby
 require 'lxc'
 
 class Container
