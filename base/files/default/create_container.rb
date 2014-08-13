@@ -13,8 +13,7 @@ class Container
     }
 
     container = new_container(@container_info[:type])
-    container.clone(@container_info[:name])
-    sleep(10)
+    container.clone(@container_info[:name], flags: LXC::LXC_CLONE_SNAPSHOT, bdev_type: 'overlayfs' )
   end
 
   def new_container(param)
