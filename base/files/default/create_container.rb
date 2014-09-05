@@ -31,11 +31,11 @@ class Container
     @container.set_cgroup_item("cpuset.cpus", @container_info[:cpus])
   end
 
-  def attach
-    @container.attach do 
-    #run custom commands inside containers
-    end 
-  end
+#  def attach
+#    @container.attach do 
+#    #run custom commands inside containers
+#    end 
+#  end
 
   def get_ips
     @container.ip_addresses
@@ -51,7 +51,8 @@ if arguments.length == 4
   container = Container.new(arguments)
   container.create_and_start
   container.set_cgroup_limits
-  container.attach
+ # container.attach
+  sleep(5)
   puts container.get_ips
 else
   puts "Please check the number of arguments passed, it should be four arguments maximum."
