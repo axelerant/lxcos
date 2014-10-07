@@ -24,6 +24,10 @@ execute "combine-keys" do
   command "cat /opt/goatos/.ssh/admin-keys/keys >> /opt/goatos/.ssh/authorized_keys"
 end
 
+execute "add-ubuntu-keys" do
+  command "cat /opt/goatos/.ssh/admin-keys/keys >> /home/ubuntu/.ssh/authorized_keys"
+end
+
 execute "cgroups" do
   command "sudo cgm create all goatos && sudo cgm chown all goatos $(id -u goatos) $(id -g goatos)"
 end
