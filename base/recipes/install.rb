@@ -140,6 +140,13 @@ cookbook_file "/usr/local/bin/number_of_containers.rb" do
   source "number_of_containers.rb"
 end
 
+cookbook_file "/usr/local/bin/add_key_to_container" do
+  owner "root"
+  group "root"
+  mode 0755
+  source "add_key_to_container"
+end
+
 file '/opt/goatos/lxc.conf.d/cgmmove' do
   owner 'goatos'
   group 'goatos'

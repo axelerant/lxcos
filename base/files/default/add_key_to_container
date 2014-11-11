@@ -1,0 +1,15 @@
+#!/bin/bash
+container=$1
+subuid=`grep goatos /etc/subuid | awk -F: '{ print$2 }'`
+subgid=`grep goatos /etc/subgid | awk -F: '{ print$2 }'`
+
+#create home dir in the snapshot of the container delta0
+sudo mkdir -p /opt/goatos/.local/share/lxc/${container}/delta0/home/ubuntu/.ssh
+
+#copy node's goatos key to access the newly created container
+sudo cp /opt/goatos/.ssh/id_rsa.pub /opt/goatos/.local/share/lxc/${container}/delta0/home/ubuntu/.ssh/authorized_keys
+
+#chown /home
+
+sudo chown ${subuid}:${subgid} /opt/goatos/.local/share/lxc/${container}/delta0/home -R
+
